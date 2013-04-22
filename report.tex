@@ -13,5 +13,49 @@
 %\tableofcontents
 %\newpage
 
+\section{Hardware}
+
+\subsection{Active Components}
+
+The microcontroller will need to have sufficient I/O capabilities to communicate
+with any extra sensing devices required, the ability to store the data as it's
+captured and some way to transfer data to and from the device.
+
+I have selected the Atmel ATSAM4SD32B which has 47 I/O pins for communicating
+with an accelerometer, a GPS and a temperature sensor. It also has 2048 kb of
+onboard flash memory (which should be sufficient to store the device's software
+and cache data as it's being captured (which can then be transferred onto an SD
+card via the onboard SD slot). Finally, it features a USB connector for
+transferring data to and from the device.
+
+The microcontroller has a small form factor (around 10cm x 10cm) and has a
+low-power mode which I intend to activate when the device is not moving.
+
+The device will require an accelerometer, I have selected an ADXL335 from Analog
+Devices. This is a 6-pin analogue device (which will need to use the onboard A/D
+converter on the microcontroller) and has a maximum shock value of 10kg which I
+believe will be sufficient for the application.
+
+GPS data will be captured by a GPS-634R, also from Analog Devices. This also
+uses a 6-pin connector to interface with the Microcontroller and its onboard
+Synchronous Serial Controller.
+
+Temperature readings will be captured by a STMicroelectronics UDFN-4L, this is a
+very small device requiring 2 connection pins for communication with the
+Microcontroller. This device will be able to measure temperature accurate to
+within a couple of degrees which, while not phenomenally accurate, I believe
+should be enough accuracy to confirm or quash the client's suspicions about
+temperature being a factor in the performance of the device.
+
+\section{References}
+\begin{itemize}
+\item{Atmel ATSAM4SD32B -
+	http://www.atmel.com/devices/SAM4SD32B.aspx?tab=overview}
+\item{Analog Devices ADXL335 - http://www.nskelectronics.in/accelorometer.html}
+\item{Analog Devices GPS-634R -
+	http://www.nskelectronics.in/gps\_kit\_with\_patch\_antenna\_.html}
+\item{STMicroelectronics UDFN-4L - http://www.st.com/web/catalog/sense\_power/FM89/SC294/PF129199}
+\end{itemize}
+
 \end{document}
 
