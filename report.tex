@@ -15,10 +15,37 @@
 
 \section{Hardware}
 
-\subsection{Active Components}
+\subsection{Components}
+
+\subsubsection{Microcontroller}
+% TODO add picture
+I began by looking at boards specifically designed for prototyping this kind of
+device, such as the Arduino. These devices are typically very well supported,
+often with a strong community of maker types. I decided against actually using
+an Arduino, however, as it is slightly larger than the microcontroller specified
+below and also requires more power.
+
+In the end, I have specified an Atmel SAM4SD32B. This microcontroller can run at
+a lower voltage (1.62 - 3.6v) and is small enough (I hope) to be attached to the
+inside of even the smallest suitcase without too much hinderance to the case's
+primary function of storing one's luggage!
+
+The SAM4SD32B is equipped with 47 general I/O pins, an A/D converter, a
+Synchronous Serial Controller and USB and SD connections. The microcontroller is
+also capable of running in a number of low-power modes which will be a necessity
+in keeping the device's power consumption to a minimum during its operational
+life.
+
+\subsubsection{Accelorometer/Gyro}
+% TODO add picture
+I have selected a combined Accelorometer-Gyro, the MPU-6050. This is a 3-axis
+Accelorometer and Gyro built into a single board. The device is capable of
+measuring movement within a range of programmatically selected ranges which may
+allow the client to record a range of movement events during the device's
+deployment.
 
 \subsection{Connection diagram}
-%TODO
+
 \subsection{Power requirements}
 
 \section{References}
