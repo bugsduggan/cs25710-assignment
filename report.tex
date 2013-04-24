@@ -44,13 +44,39 @@ measuring movement within a range of programmatically selected ranges which may
 allow the client to record a range of movement events during the device's
 deployment.
 
+I did consider using a seperate accelerometer and gyro but these typically will
+not only take more physical space and power but also, many of the 3-axis gyros I
+found were actually more expensive on their own than the combined IMU specified
+above.
+
+\subsubsection{GPS}
+% TODO add picture
+When selecting a GPS, I tried to find one with a good signal strength (it will
+likely be subject to a few layers of various materials which may hamper its
+ability to communicate with the necessary satellites. I also tried to find
+devices with an on-board antenna as this will reduce the overall form factor.
+
+In the end, I have specified the EM-408. This is capable of 10m accuracy (which
+I am hoping will be more than enough for this application), and a high degree of
+sensitivity (-159dBm).
+
+\subsubsection{Temperature}
+% TODO add picture
+I have specified the use of a TMP36 temperature sensor. This is a very small,
+low-powered component which can measure temperature accurate to within 1 or 2
+degrees (accuracy is reduced at higher temperatures).
+
+\subsubsection{Cells}
+
+\subsubsection{Other components}
+
 \subsection{Connection diagram}
 
 \subsection{Power requirements}
 
 \section{References}
 \begin{itemize}
-
+	\item{foo}
 \end{itemize}
 
 \end{document}
