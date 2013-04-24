@@ -44,6 +44,13 @@ measuring movement within a range of programmatically selected ranges which may
 allow the client to record a range of movement events during the device's
 deployment.
 
+I intend to make use of the accelerometer's available interrupt routines to
+wake-up the microcontroller when movement is occurring. I am intending to
+collect data approximately every 0.5 seconds during 'gentle' movement (such as
+might occur when walking around with the case). I intend to capture data far
+more rapidly during 'shock' events, I believe capturing around 1000 times per
+second (for half a second or so) should be adequate.
+
 I did consider using a seperate accelerometer and gyro but these typically will
 not only take more physical space and power but also, many of the 3-axis gyros I
 found were actually more expensive on their own than the combined IMU specified
@@ -57,8 +64,10 @@ ability to communicate with the necessary satellites. I also tried to find
 devices with an on-board antenna as this will reduce the overall form factor.
 
 In the end, I have specified the EM-408. This is capable of 10m accuracy (which
-I am hoping will be more than enough for this application), and a high degree of
-sensitivity (-159dBm).
+I anticipate will be more than enough for this application), and a high degree of
+sensitivity (-159dBm). The EM-408 is capable of outputting data in a number of
+well supported formats and more consultation would be required with the client
+to acertain exactly what data they require for their analysis.
 
 \subsubsection{Temperature}
 % TODO add picture
@@ -84,7 +93,19 @@ locate 1 supplier for this exact model of cell which requires a minimum order of
 50 pieces. I would be keen to discuss alternative power configurations with the
 client, but I believe this cell to be the most ideal for the task at hand.
 
-\subsubsection{Other components}
+\subsubsection{Major alternatives}
+Aside from using an Arduino as the base for the project (outlined above),
+another option would be to use a smartphone with an open, extensible software
+platform inlcuded (for example, and Android phone). These devices typically have
+many of the sensory devices required to achieve the necessary functionality
+(with the omission, perhaps, of temperature sensing). I believe this would
+significantly reduce the overall cost and development time.
+
+I believe the main drawback of this approach is that the device would not be as
+flexible in terms of component selection (it would be a much larger operation
+to, for example, install a different GPS sensor) and the components it contains
+may not be able to sense accurately or fast enough to capture the level of data
+required to be useful to the client.
 
 \subsection{Connection diagram}
 
