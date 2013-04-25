@@ -176,7 +176,7 @@ connections.
 
 \subsection{Power consumption}
 
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|l|r|r|}
 	\hline
 	\textbf{Device} & \textbf{Active state} & \textbf{Idle state} \\
 	\hline
@@ -190,6 +190,7 @@ connections.
 	Total & 128.15mA & 147.5$\mu$A \\
 	\hline
 \end{tabular}
+\vspace{20pt}
 
 All devices will run at 3.3v. It may be necessary to regulate the voltage from
 the cells as the actual output voltage is likely to change throughout their
@@ -201,6 +202,27 @@ design; it should be trivial to add one at a later date as needed.
 \begin{center}
 \includegraphics[scale=0.35]{images/layout.jpeg}
 \end{center}
+
+The diagram above shows one possible configuration of the devices (albeit
+without the cell). This configuration maintains the smallest dimensions for the
+device overall. I would recommend mounting the entire unit inside of a plastic
+case with battery holder (these are easily available and relatively cheap).
+
+\subsubsection{Weight}
+\begin{tabular}{|l|r|}
+	\hline
+	\textbf{Device} & \textbf{Weight} \\
+	\hline
+	\hline
+	SAM4SD32B & 0.8g \\
+	MPU-6050 & $\textless$0.01g \\
+	EM-408 & 20g \\
+	TMP36 & 5.7g \\
+	\hline
+	\hline
+	Total & 26.5g \\
+	\hline
+\end{tabular}
 
 \subsection{Bill of materials}
 
