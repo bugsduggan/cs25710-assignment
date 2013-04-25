@@ -1,5 +1,6 @@
 \documentclass[a4paper, twoside]{article}
 
+\usepackage[font={small,it}]{caption}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 
@@ -21,10 +22,12 @@
 \subsection{Components}
 
 \subsubsection{Microcontroller}
-\begin{wrapfigure}{l}{0.25\textwidth}
+\begin{wrapfigure}[9]{l}{0.25\textwidth}
+	\vspace{-18pt}
 	\begin{center}
 		\includegraphics[scale=0.25]{images/atmel_sam4sd32.jpg}
 	\end{center}
+	\caption{Atmel SAM4SD32B}
 \end{wrapfigure}
 
 I began by looking at boards specifically designed for prototyping this kind of
@@ -49,6 +52,7 @@ life.
 	\begin{center}
 		\includegraphics[scale=0.3]{images/mpu-6050.jpg}
 	\end{center}
+	\caption{InvenSense MPU-6050}
 \end{wrapfigure}
 
 I have selected a combined Accelerometer-Gyro, the MPU-6050. This is a 3-axis
@@ -71,9 +75,12 @@ above.
 
 \subsubsection{GPS}
 \begin{wrapfigure}{l}{0.25\textwidth}
+	\vspace{-35pt}
 	\begin{center}
 		\includegraphics[scale=0.2]{images/em-408.jpg}
 	\end{center}
+	\vspace{-20pt}
+	\caption{GlobalSat EM-408}
 \end{wrapfigure}
 
 When selecting a GPS, I tried to find one with a good signal strength (it will
@@ -89,10 +96,13 @@ to acertain exactly what data they require for their analysis.
 
 \clearpage
 \subsubsection{Temperature}
-\begin{wrapfigure}{r}{0.25\textwidth}
+\begin{wrapfigure}[3]{r}{0.25\textwidth}
+	\vspace{-40pt}
 	\begin{center}
 		\includegraphics[scale=0.4]{images/tmp36.jpg}
 	\end{center}
+	\caption{Analog Devices TMP36}
+	\vspace{-80pt}
 \end{wrapfigure}
 
 I have specified the use of a TMP36 temperature sensor. This is a very small,
@@ -101,9 +111,12 @@ degrees (accuracy is reduced at higher temperatures).
 
 \subsubsection{Cells}
 \begin{wrapfigure}{l}{0.25\textwidth}
+	\vspace{-20pt}
 	\begin{center}
 		\includegraphics[scale=0.15]{images/a123.jpg}
 	\end{center}
+	\caption{OSN Power Tech A123}
+	\vspace{-20pt}
 \end{wrapfigure}
 
 I have calculated the the device will draw around 130mA when capturing data and
@@ -116,7 +129,7 @@ self discharge and should provide a reasonable stable power supply during
 operation. These cells also have the added benefit of being rechargable and
 should last for around 2000 uses if cared for properly.
 
-I have decided to specify the use of 1 ANR26650M1B cell. This cell will output
+I have decided to specify the use of 1 A123 (ANR26650M1B) cell. This cell will output
 3.3v at up to 150A (capacity 2500mAh. Unfortunately, I have only been able to
 locate 1 supplier for this exact model of cell which requires a minimum order of
 50 pieces. I would be keen to discuss alternative power configurations with the
@@ -173,7 +186,7 @@ moving.
 	\item{IMU - InvenSense MPU-6050 - https://www.sparkfun.com/products/11028}
 	\item{GPS - GlobalSat EM-408 - https://www.sparkfun.com/products/8234}
 	\item{Temperature - Analog Devices TMP36 - https://www.sparkfun.com/products/10988}
-	\item{Cell - OSN Power Tech ANR26650M1B -
+	\item{Cell - OSN Power Tech A123 -
 		http://www.alibaba.com/product-gs/742803918/LiFePO4\_battery\_A123\_26650\_with\_2500mAh.html}
 \end{itemize}
 
