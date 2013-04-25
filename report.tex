@@ -200,7 +200,7 @@ design; it should be trivial to add one at a later date as needed.
 \clearpage
 \subsection{Dimensions}
 \begin{center}
-\includegraphics[scale=0.35]{images/layout.jpeg}
+\includegraphics[scale=0.25]{images/layout.jpeg}
 \end{center}
 
 The diagram above shows one possible configuration of the devices (albeit
@@ -218,13 +218,33 @@ case with battery holder (these are easily available and relatively cheap).
 	MPU-6050 & $\textless$0.01g \\
 	EM-408 & 20g \\
 	TMP36 & 5.7g \\
+	A123 & 72.5g \\
 	\hline
 	\hline
-	Total & 26.5g \\
+	Total & 99g \\
 	\hline
 \end{tabular}
 
-\subsection{Bill of materials}
+\subsection{Bill of materials} %TODO
+
+\begin{tabular}{|l|r|r|}
+	\hline
+	\textbf{Device} & \textbf{Single unit} & \textbf{100 units} \\
+	\hline
+	\hline
+	SAM4SD32B & foo & foo \\
+	MPU-6050 & \pounds13.09 & \pounds10.47 \\
+	EM-408 & \pounds42.63 & \pounds34.10 \\
+	TMP36 & \pounds0.98 & \pounds0.79 \\
+	A123 & N/A & Unknown* \\
+	\hline
+	\hline
+	Total & foo & foo \\
+	\hline
+\end{tabular}
+
+* I was completely unable to locate an actual price for the cells online so this
+has not been included in the calculation. 
 
 \section{Software}
 
