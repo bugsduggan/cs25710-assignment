@@ -136,7 +136,26 @@ to, for example, install a different GPS sensor) and the components it contains
 may not be able to sense accurately or fast enough to capture the level of data
 required to be useful to the client.
 
+\subsection{Data storage}
+I intend to make use of an SD card to hold the data captured by the device.
+These are very compact and reasonably priced storage media and will allow the
+client to simply transfer the card into their own machine to interpret and
+analyse the data. In addition to this, the microcontroller has 2MB of flash
+memory built-in which I intend to use as a write cache before the data gets sent
+to the SD card. This should avoid a bottle-neck of data trying to be written to
+disk during shock events.
+
+In addition to the accelerometer and gyro information being captured (outlined
+above), I intend to capture GPS and temperature data around once every 5mins while the device is
+moving.
+
 \subsection{Connection diagram}
+
+\subsection{Power consumption}
+
+\subsection{Dimensions}
+
+\subsection{Bill of materials}
 
 \section{References}
 \begin{itemize}
