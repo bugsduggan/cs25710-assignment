@@ -134,6 +134,13 @@ locate 1 supplier for this exact model of cell which requires a minimum order of
 50 pieces. I would be keen to discuss alternative power configurations with the
 client, but I believe this cell to be the most ideal for the task at hand.
 
+\subsubsection{Extra components}
+I would like to add a single LED indicator which will be switched on when the
+device is capturing data (i.e. when it's moving). This will enable the user to
+quickly ascertain whether the device is working or not by simply moving the
+device (thus triggering the accelerometer) and seeing whether the LED lights up
+or not.
+
 \subsection{Major alternatives}
 Aside from using an Arduino as the base for the project (outlined above),
 another option would be to use a smartphone with an open, extensible software
@@ -225,7 +232,7 @@ case with battery holder (these are easily available and relatively cheap).
 	\hline
 \end{tabular}
 
-\subsection{Bill of materials} %TODO
+\subsection{Bill of materials} % TODO
 
 \begin{tabular}{|l|r|r|}
 	\hline
@@ -246,9 +253,13 @@ case with battery holder (these are easily available and relatively cheap).
 * I was completely unable to locate an actual price for the cells online so this
 has not been included in the calculation. 
 
+\clearpage
 \section{Software}
 
 \subsection{Block diagram}
+\begin{center}
+	\includegraphics[scale=0.35]{images/software.jpeg}
+\end{center}
 
 \subsection{Detail} % TODO think of a less shit name
 
