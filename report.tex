@@ -1,5 +1,8 @@
 \documentclass[a4paper, twoside]{article}
 
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
 \setlength{\oddsidemargin}{0in} \setlength{\evensidemargin}{0in}
 \setlength{\textwidth}{6.2in}
 \setlength{\topmargin}{-0.3in} \setlength{\textheight}{9.8in}
@@ -18,7 +21,12 @@
 \subsection{Components}
 
 \subsubsection{Microcontroller}
-% TODO add picture
+\begin{wrapfigure}{l}{0.25\textwidth}
+	\begin{center}
+		\includegraphics[scale=0.25]{images/atmel_sam4sd32.jpg}
+	\end{center}
+\end{wrapfigure}
+
 I began by looking at boards specifically designed for prototyping this kind of
 device, such as the Arduino. These devices are typically very well supported,
 often with a strong community of maker types. I decided against actually using
@@ -37,7 +45,12 @@ in keeping the device's power consumption to a minimum during its operational
 life.
 
 \subsubsection{Accelerometer/Gyro}
-% TODO add picture
+\begin{wrapfigure}{r}{0.25\textwidth}
+	\begin{center}
+		\includegraphics[scale=0.3]{images/mpu-6050.jpg}
+	\end{center}
+\end{wrapfigure}
+
 I have selected a combined Accelerometer-Gyro, the MPU-6050. This is a 3-axis
 Accelerometer and Gyro built into a single board. The device is capable of
 measuring movement within a range of programmatically selected ranges which may
@@ -57,7 +70,12 @@ found were actually more expensive on their own than the combined IMU specified
 above.
 
 \subsubsection{GPS}
-% TODO add picture
+\begin{wrapfigure}{l}{0.25\textwidth}
+	\begin{center}
+		\includegraphics[scale=0.2]{images/em-408.jpg}
+	\end{center}
+\end{wrapfigure}
+
 When selecting a GPS, I tried to find one with a good signal strength (it will
 likely be subject to a few layers of various materials which may hamper its
 ability to communicate with the necessary satellites. I also tried to find
@@ -69,14 +87,25 @@ sensitivity (-159dBm). The EM-408 is capable of outputting data in a number of
 well supported formats and more consultation would be required with the client
 to acertain exactly what data they require for their analysis.
 
+\clearpage
 \subsubsection{Temperature}
-% TODO add picture
+\begin{wrapfigure}{r}{0.25\textwidth}
+	\begin{center}
+		\includegraphics[scale=0.4]{images/tmp36.jpg}
+	\end{center}
+\end{wrapfigure}
+
 I have specified the use of a TMP36 temperature sensor. This is a very small,
 low-powered component which can measure temperature accurate to within 1 or 2
 degrees (accuracy is reduced at higher temperatures).
 
 \subsubsection{Cells}
-% TODO add picture
+\begin{wrapfigure}{l}{0.25\textwidth}
+	\begin{center}
+		\includegraphics[scale=0.15]{images/a123.jpg}
+	\end{center}
+\end{wrapfigure}
+
 I have calculated the the device will draw around 130mA when capturing data and
 around 0.2mA in standby mode. I am assuming the device will be in capture mode
 for approx 5\% of its operation. This works out at 2247.84mAh during the
@@ -108,8 +137,6 @@ may not be able to sense accurately or fast enough to capture the level of data
 required to be useful to the client.
 
 \subsection{Connection diagram}
-
-\subsection{Power requirements}
 
 \section{References}
 \begin{itemize}
