@@ -96,13 +96,12 @@ to acertain exactly what data they require for their analysis.
 
 \clearpage
 \subsubsection{Temperature}
-\begin{wrapfigure}[3]{r}{0.25\textwidth}
+\begin{wrapfigure}{r}{0.25\textwidth}
 	\vspace{-40pt}
 	\begin{center}
 		\includegraphics[scale=0.4]{images/tmp36.jpg}
 	\end{center}
 	\caption{Analog Devices TMP36}
-	\vspace{-80pt}
 \end{wrapfigure}
 
 I have specified the use of a TMP36 temperature sensor. This is a very small,
@@ -162,7 +161,18 @@ In addition to the accelerometer and gyro information being captured (outlined
 above), I intend to capture GPS and temperature data around once every 5mins while the device is
 moving.
 
+\clearpage
 \subsection{Connection diagram}
+\begin{center}
+\includegraphics[scale=0.45]{images/connectiondiagram.jpg}
+\end{center}
+* I believe the MPU-6050 will also require the VLOGIC and INT pins to be
+connected to the microcontroller to enable the microcontroller to wake from
+sleep mode when movement commences. I have not been able to acertain from the
+datasheets available where these connections should be made, however. I believe
+that the connections are available on the microcontroller though and someone
+with more experience than myself should not have a problem locating the correct
+connections.
 
 \subsection{Power consumption}
 
