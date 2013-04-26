@@ -30,14 +30,14 @@
 	\caption{Atmel SAM4SD32B}
 \end{wrapfigure}
 
-I began by looking at boards specifically designed for prototyping this kind of
-device, such as the Arduino. These devices are typically very well supported,
-often with a strong community of maker types. I decided against actually using
-an Arduino, however, as it is slightly larger than the microcontroller specified
-below and also requires more power.
+I began by looking at boards specifically designed for prototyping mobile and
+embedded devices, such as the Arduino. These devices are typically very well supported,
+often with a strong community of enthusiastic and knowledgeable users. I decided against
+actually using an Arduino or similar, however, as they are typically slightly
+bulkier and more power-hungry than simpler, more bespoke alternatives.
 
 In the end, I have specified an Atmel SAM4SD32B. This microcontroller can run at
-a lower voltage (1.62 - 3.6v) and is small enough (I hope) to be attached to the
+a lower voltage (1.62 - 3.6v) and is small enough to be attached to the
 inside of even the smallest suitcase without too much hinderance to the case's
 primary function of storing one's luggage!
 
@@ -68,7 +68,7 @@ might occur when walking around with the case). I intend to capture data far
 more rapidly during 'shock' events, I believe capturing around 1000 times per
 second (for half a second or so) should be adequate.
 
-I did consider using a seperate accelerometer and gyro but these typically will
+I did consider using a separate accelerometer and gyro but these typically will
 not only take more physical space and power but also, many of the 3-axis gyros I
 found were actually more expensive on their own than the combined IMU specified
 above.
@@ -92,7 +92,7 @@ In the end, I have specified the EM-408. This is capable of 10m accuracy (which
 I anticipate will be more than enough for this application), and a high degree of
 sensitivity (-159dBm). The EM-408 is capable of outputting data in a number of
 well supported formats and more consultation would be required with the client
-to acertain exactly what data they require for their analysis.
+to ascertain exactly what data they require for their analysis.
 
 \clearpage
 \subsubsection{Temperature}
@@ -118,14 +118,14 @@ degrees (accuracy is reduced at higher temperatures).
 	\vspace{-20pt}
 \end{wrapfigure}
 
-I have calculated the the device will draw around 130mA when capturing data and
+I have calculated that the device will draw around 130mA when capturing data and
 around 0.2mA in standby mode. I am assuming the device will be in capture mode
 for approx 5\% of its operation. This works out at 2247.84mAh during the
 device's two-week operation.
 
 I have decided to specify a Lithium Ion battery. This has a very low rate of
 self discharge and should provide a reasonable stable power supply during
-operation. These cells also have the added benefit of being rechargable and
+operation. These cells also have the added benefit of being rechargeable and
 should last for around 2000 uses if cared for properly.
 
 I have decided to specify the use of 1 A123 (ANR26650M1B) cell. This cell will output
@@ -144,7 +144,7 @@ or not.
 \subsection{Major alternatives}
 Aside from using an Arduino as the base for the project (outlined above),
 another option would be to use a smartphone with an open, extensible software
-platform inlcuded (for example, and Android phone). These devices typically have
+platform included (for example, and Android phone). These devices typically have
 many of the sensory devices required to achieve the necessary functionality
 (with the omission, perhaps, of temperature sensing). I believe this would
 significantly reduce the overall cost and development time.
@@ -175,7 +175,7 @@ moving.
 \end{center}
 * I believe the MPU-6050 will also require the VLOGIC and INT pins to be
 connected to the microcontroller to enable the microcontroller to wake from
-sleep mode when movement commences. I have not been able to acertain from the
+sleep mode when movement commences. I have not been able to ascertain from the
 datasheets available where these connections should be made, however. I believe
 that the connections are available on the microcontroller though and someone
 with more experience than myself should not have a problem locating the correct
@@ -261,10 +261,67 @@ has not been included in the calculation.
 	\includegraphics[scale=0.35]{images/software.jpeg}
 \end{center}
 
-\subsection{Detail} % TODO think of a less shit name
+\subsection{Detailed description}
+The software breaks down into 4 main sections:
+
+\subsubsection{Initialisation/Idle}
+When the device first receives power, it will initialise all the devices,
+including the accelerometer interrupt, and put them into low-power mode. I
+anticipate the device will spend the majority of the time in this state,
+awaiting sensory input.
+
+\subsubsection{Capture state}
+When movement is detected by the IMU, the device will enter a capture mode which
+will capture accelerometer/gyro data every 0.5 seconds. This also starts the GPS
+routine outlined below. If the force recorded by the accelerometer is great
+enough, however, the system will switch to Shock state.
+
+\subsubsection{Shock state}
+This state is triggered by excessive, sudden movement being recorded by the
+accelerometer. This state will start by setting a timer to control the total
+time spent in this state (0.5 seconds) and will capture data at a higher rate
+(every 0.001 seconds) until the 0.5 seconds have elapsed.
+
+\subsubsection{GPS}
+In addition to the Capture state outlined above, the device will start another
+timer when movement is detected. This timer will time a 5minute interval after
+which GPS and temperature data will be captured.
+
+\subsubsection{Other considerations}
+Attention should be paid to the situations where the device actually writes data
+to the SD card (marked on the diagram in red). As stated previously, the
+intention is to use the memory on-board the microcontroller as a write cache and
+the intention here is to (hopefully) start some subroutine which may handle the
+writing of the data to the SD card in parallel to the remainder of the
+operations the device is undertaking to perform during capture states.
+
+It should be noted also that I feel the exact details of how the software moves
+from capturing data back into an idle state may prove to not be the most
+efficient use of the low-power modes available; that is, currently, when the
+device is in Capture mode (recording data every 0.5 seconds), there is no
+provision for moving into the Idle state if the case is still moving.
 
 \subsection{Development plan}
+The microcontroller's manufacturers (Atmel) provide an IDE specifically for
+working with this range of devices which I would recommend using. This will,
+obviously, require a PC capable of running the software in addition to a USB
+connection to transfer the program onto the board.
 
+I would recommend concentrating on successfully gathering data from the IMU
+(including registering the interrupts required) as without this, the device will
+not get past the Idle state. I would then work incrementally, using the diagram
+above as a template (working from top to bottom and right to left) to implement
+the remaining functionality; thus ending by writing the sections of the program
+which will capture GPS and temperature data.
+
+I believe it would be advantageous to make use of 3rd-party code for
+communicating with the I\textsuperscript{2}C interface on the MPU-6050 and
+accessing its more advanced and less well-documented features. I have found a
+potentially lucrative collection of research and code concerning the
+I\textsuperscript{2}C interface with relation to the MPU-6050 available at
+\emph{http://www.i2cdevlib.com/devices/mpu6050}
+
+\clearpage
 \subsection{Usage procedure}
 The procedure for using the device is simple. The user simply installs a
 fully-charged battery cell, and checks that the device appears to be operational
@@ -278,11 +335,11 @@ compatible machine to read and analyse the data.
 
 \section{References}
 \begin{itemize}
-	\item{Microcontroller - Atmel SAM4SD32B - http://www.atmel.com/devices/SAM4SD32B.aspx}
-	\item{IMU - InvenSense MPU-6050 - https://www.sparkfun.com/products/11028}
-	\item{GPS - GlobalSat EM-408 - https://www.sparkfun.com/products/8234}
-	\item{Temperature - Analog Devices TMP36 - https://www.sparkfun.com/products/10988}
-	\item{Cell - OSN Power Tech A123 -
+	\item{Microcontroller - Atmel SAM4SD32B\\http://www.atmel.com/devices/SAM4SD32B.aspx}
+	\item{IMU - InvenSense MPU-6050\\https://www.sparkfun.com/products/11028}
+	\item{GPS - GlobalSat EM-408\\https://www.sparkfun.com/products/8234}
+	\item{Temperature - Analog Devices TMP36\\https://www.sparkfun.com/products/10988}
+	\item{Cell - OSN Power Tech A123\\
 		http://www.alibaba.com/product-gs/742803918/LiFePO4\_battery\_A123\_26650\_with\_2500mAh.html}
 \end{itemize}
 
