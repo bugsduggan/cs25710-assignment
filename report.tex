@@ -173,13 +173,13 @@ moving.
 \begin{center}
 \includegraphics[scale=0.45]{images/connectiondiagram.jpeg}
 \end{center}
-* I believe the MPU-6050 will also require the VLOGIC and INT pins to be
+\footnotetext[1]{I believe the MPU-6050 will also require the VLOGIC and INT pins to be
 connected to the microcontroller to enable the microcontroller to wake from
 sleep mode when movement commences. I have not been able to ascertain from the
 datasheets available where these connections should be made, however. I believe
 that the connections are available on the microcontroller though and someone
 with more experience than myself should not have a problem locating the correct
-connections.
+connections.}
 
 \subsection{Power consumption}
 
@@ -232,26 +232,29 @@ case with battery holder (these are easily available and relatively cheap).
 	\hline
 \end{tabular}
 
-\subsection{Bill of materials} % TODO
+\subsection{Bill of materials}
 
 \begin{tabular}{|l|r|r|}
 	\hline
 	\textbf{Device} & \textbf{Single unit} & \textbf{100 units} \\
 	\hline
 	\hline
-	SAM4SD32B & foo & foo \\
+	SAM4SD32B\footnotemark[2] & \pounds96.53 & \pounds96.53 \\
 	MPU-6050 & \pounds13.09 & \pounds10.47 \\
 	EM-408 & \pounds42.63 & \pounds34.10 \\
 	TMP36 & \pounds0.98 & \pounds0.79 \\
-	A123 & N/A & Unknown* \\
+	A123\footnotemark[3] & N/A & Unknown \\
 	\hline
 	\hline
-	Total & foo & foo \\
+	Total & \pounds153.23 & \pounds141.79 \\
 	\hline
 \end{tabular}
-
-* I was completely unable to locate an actual price for the cells online so this
-has not been included in the calculation. 
+\footnotetext[2]{This price is based on the SAM4S-EK2 'Evaluation Kit' which
+contains many extra components used in development of which only 1 or 2 should
+ever need to be purchased. Your mileage may vary.}
+\footnotetext[3]{I was completely unable to locate
+an actual price for the cells online so this has not been
+included in the calculation.}
 
 \clearpage
 \section{Software}
